@@ -1,16 +1,24 @@
 import { IExtension } from "./interfaces/IExtension";
 const electron = require("electron");
 const remote = require("electron").remote;
+const ipcRenderer = require("electron").ipcRenderer;
+const _uuid = require("uuid/v4");
 const BrowserWindow = remote.BrowserWindow;
 
-export class Extension implements IExtension {
-    public openNewWindow(options, fileUrl, closedCallback, readyToShowCallback) {
+export class Extension {
+    public openNewWindow(options: any, fileUrl: string, messageEvent: any, showDevTools: boolean) {
         let top = remote.getCurrentWindow();
         let windowOptions = <any>{
             title: options.title, parent: top, modal: false,
             show: false, hasShadow: true, resizable: true, width: 800, height: 600, minimizable: false,
         };
         let child = new BrowserWindow(windowOptions);
+        let idx = _uuid();
+        ipcRenderer.on("message-" + idx, function (event, msg) {
+            messageEvent(msg);
+        });
+
+        fileUrl = fileUrl + "?id=" + idx;
         child.loadURL(fileUrl);
         let _window = <any>window;
         _window.disable();
@@ -18,13 +26,11 @@ export class Extension implements IExtension {
         child.once("closed", () => {
             _window.enable();
             child = null;
-            closedCallback();
         });
+        if (showDevTools) {
+            child.openDevTools();
+        }
 
-        child.once("ready-to-show", () => {
-            child.show();
-            readyToShowCallback();
-        });
     }
 
     public showAlert(message: string) {
