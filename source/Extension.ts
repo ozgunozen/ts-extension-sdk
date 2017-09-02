@@ -1,4 +1,5 @@
 import { IExtension } from "./interfaces/IExtension";
+import { WindowOptions } from "./window/WindowOptions";
 const electron = require("electron");
 const remote = require("electron").remote;
 const ipcRenderer = require("electron").ipcRenderer;
@@ -6,11 +7,11 @@ const _uuid = require("uuid/v4");
 const BrowserWindow = remote.BrowserWindow;
 
 export class Extension {
-    public openNewWindow(options: any, fileUrl: string, messageEvent: any, showDevTools: boolean) {
+    public openNewWindow(options: WindowOptions, fileUrl: string, messageEvent: any, showDevTools: boolean) {
         let top = remote.getCurrentWindow();
         let windowOptions = <any>{
             title: options.title, parent: top, modal: false,
-            show: false, hasShadow: true, resizable: true, width: 800, height: 600, minimizable: false,
+            show: false, hasShadow: true, resizable: true, width: options.width, height:options.height, minimizable: false,
         };
         let child = new BrowserWindow(windowOptions);
         let idx = _uuid();
