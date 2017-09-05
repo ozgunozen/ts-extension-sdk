@@ -1,7 +1,8 @@
 {
   "name": "@teamsql-extensions/ts-extension-sdk",
-  "version": "0.0.9",
+  "version": "0.1.1",
   "description": "TeamSQL Extension SDK",
+  "main": "index",
   "scripts": {
     "test": "gulp default",
     "build": "gulp build"
