@@ -11,7 +11,7 @@ export class Extension {
         let top = remote.getCurrentWindow();
         let windowOptions = <any>{
             title: options.title, parent: top, modal: false,
-            show: false, hasShadow: true, resizable: true, width: options.width, height:options.height, minimizable: false,
+            show: false, hasShadow: true, resizable: true, width: options.width, height: options.height, minimizable: false,
         };
         let child = new BrowserWindow(windowOptions);
         let idx = _uuid();
