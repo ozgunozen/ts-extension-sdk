@@ -1,6 +1,6 @@
 {
   "name": "@teamsql-extensions/ts-extension-sdk",
-  "version": "0.1.2",
+  "version": "0.1.9",
   "description": "TeamSQL Extension SDK",
   "main": "index",
   "scripts": {

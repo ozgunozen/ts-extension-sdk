@@ -15,7 +15,7 @@ export class Extension {
         };
         let child = new BrowserWindow(windowOptions);
         let idx = _uuid();
-        ipcRenderer.on("message-" + idx, function (event, msg) {
+        ipcRenderer.on(idx, function (event, msg) {
             messageEvent(msg);
         });
 
@@ -32,6 +32,15 @@ export class Extension {
             child.openDevTools();
         }
 
+        let returnObject = {
+            id: idx,
+            child: child,
+        };
+        return returnObject;
+    }
+
+    public sendMessage(child, messageId, message) {
+        child.webContents.send(messageId, message);
     }
 
     public showAlert(message: string) {
