@@ -10,7 +10,7 @@ export class UserDefaults {
         this.writeDefaultsFile(content);
     }
 
-    public static get(key: string): void {
+    public static get(key: string): string {
         let content = this.readDefaultsFile();
         if (content[key]) {
             return content[key];
