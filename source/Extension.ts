@@ -7,11 +7,12 @@ const _uuid = require("uuid/v4");
 const BrowserWindow = remote.BrowserWindow;
 
 export class Extension {
-    public openNewWindow(options: WindowOptions, fileUrl: string, messageEvent: any, showDevTools: boolean) {
+    public openNewWindow(options: WindowOptions, fileUrl: string, messageEvent: any) {
         let top = remote.getCurrentWindow();
         let windowOptions = <any>{
             title: options.title, parent: top, modal: false,
-            show: false, hasShadow: true, resizable: true, width: options.width, height: options.height, minimizable: false,
+            show: false, hasShadow: options.hasShadow, resizable: options.resizable, width: options.width, height: options.height,
+            minimizable: options.minimizable,
         };
         let child = new BrowserWindow(windowOptions);
         let idx = _uuid();
@@ -22,13 +23,15 @@ export class Extension {
         fileUrl = fileUrl + "?id=" + idx;
         child.loadURL(fileUrl);
         let _window = <any>window;
-        _window.disable();
+        if (options.disableMainWindow) {
+            _window.disable();
+        }
 
         child.once("closed", () => {
             _window.enable();
             child = null;
         });
-        if (showDevTools) {
+        if (options.showDevTools) {
             child.openDevTools();
         }
 
