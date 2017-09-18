@@ -1,5 +1,5 @@
 {
-  "name": "@teamsql-extensions/ts-extension-sdk",
+  "name": "@teamsqlio/ts-extension-sdk",
   "version": "0.2.6",
   "description": "TeamSQL Extension SDK",
   "main": "index",
