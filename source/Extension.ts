@@ -1,5 +1,6 @@
 import { IExtension } from "./interfaces/IExtension";
 import { WindowOptions } from "./window/WindowOptions";
+import { ChildWindow } from "./window/ChildWindow";
 const electron = require("electron");
 const remote = require("electron").remote;
 const ipcRenderer = require("electron").ipcRenderer;
@@ -7,7 +8,7 @@ const _uuid = require("uuid/v4");
 const BrowserWindow = remote.BrowserWindow;
 
 export class Extension {
-    public openNewWindow(options: WindowOptions, fileUrl: string, messageEvent: any) {
+    public openNewWindow(options: WindowOptions, fileUrl: string, messageEvent: any): ChildWindow {
         let top = remote.getCurrentWindow();
         let windowOptions = <any>{
             title: options.title, parent: top, modal: false,
@@ -34,11 +35,9 @@ export class Extension {
         if (options.showDevTools) {
             child.openDevTools();
         }
-
-        let returnObject = {
-            id: idx,
-            child: child,
-        };
+        let returnObject = new ChildWindow();
+        returnObject.child = child;
+        returnObject.id = idx;
         return returnObject;
     }
 
