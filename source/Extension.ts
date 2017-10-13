@@ -4,6 +4,7 @@ import { ChildWindow } from "./window/ChildWindow";
 const electron = require("electron");
 const remote = require("electron").remote;
 const ipcRenderer = require("electron").ipcRenderer;
+const clipboard = require("electron").clipboard;
 const _uuid = require("uuid/v4");
 const BrowserWindow = remote.BrowserWindow;
 
@@ -51,5 +52,17 @@ export class Extension {
 
     public openURL(url: string) {
         electron.shell.openExternal(url);
+    }
+
+    public openNewTab(value: string) {
+        let _window = <any>window;
+        _window.activeDatabaseExplorer.createNewTab(null, false);
+        if (value) {
+            _window.activeEditor.setValue(value);
+        }
+    }
+
+    public copyToClipboard(value: string) {
+        clipboard.writeText(value);
     }
 }

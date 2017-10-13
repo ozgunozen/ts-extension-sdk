@@ -3,4 +3,5 @@ export class DataGridCell {
     public rowIndex: number;
     public columnName: string;
     public value: any;
+    public type: string;
 }
