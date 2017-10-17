@@ -1,3 +1,4 @@
+/// <reference path="../node_modules/@teamsqlio/monaco-editor/monaco.d.ts" />
 import { IExtension } from "./interfaces/IExtension";
 import { WindowOptions } from "./window/WindowOptions";
 import { ChildWindow } from "./window/ChildWindow";
@@ -64,5 +65,34 @@ export class Extension {
 
     public copyToClipboard(value: string) {
         clipboard.writeText(value);
+    }
+
+    public getActiveEditor(): monaco.editor.IStandaloneCodeEditor {
+        let _window = <any>window;
+        let editor = _window.activeEditor;
+        return editor;
+    }
+
+    public executeEdits(id: string, text: string, range: monaco.Range) {
+        let _window = <any>window;
+        let editor = <monaco.editor.IStandaloneCodeEditor>_window.activeEditor;
+        _window.query = text;
+        let operationEditId = <monaco.editor.ISingleEditOperationIdentifier>{
+            major: 1,
+            minor: 1,
+        };
+        let edits = [{
+            identifier: operationEditId,
+            range: range,
+            text: text,
+            forceMoveMarkers: true,
+        }];
+        editor.executeEdits(id, edits);
+    }
+
+    public addActionToActiveEditor(action: monaco.editor.IActionDescriptor) {
+        let _window = <any>window;
+        let editor = <monaco.editor.IStandaloneCodeEditor>_window.activeEditor;
+        editor.addAction(action);
     }
 }

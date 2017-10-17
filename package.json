@@ -1,11 +1,12 @@
 {
   "name": "@teamsqlio/ts-extension-sdk",
-  "version": "0.3.6",
+  "version": "0.3.8-beta",
   "description": "TeamSQL Extension SDK",
   "main": "index",
   "scripts": {
     "test": "gulp default",
-    "build": "gulp build"
+    "build": "gulp build",
+    "prepublish": "npm run build"
   },
   "typings": "dist",
   "files": [
@@ -21,6 +22,7 @@
     "url": "https://github.com/TeamSQL/ts-extension-sdk/issues"
   },
   "devDependencies": {
+    "@teamsqlio/monaco-editor": "0.10.6",
     "@types/chai": "^3.4.34",
     "@types/jquery": "^2.0.33",
     "@types/mocha": "^2.2.32",
