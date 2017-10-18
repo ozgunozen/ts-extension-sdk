@@ -1,9 +1,11 @@
 import { DatabaseType } from "../enums/DatabaseType";
+import { SnippetString } from "./SnippetString";
 export class Snippet {
     public label: string;
     public readonly kind: number;
     public documentation: string;
-    public insertText: string;
+    public detail: string;
+    public insertText: SnippetString;
     public readonly dbType: string;
 
     constructor(dbType: DatabaseType, label: string, insertText: string, documentation: string) {
@@ -32,7 +34,8 @@ export class Snippet {
         }
         this.label = label;
         this.kind = 14;
-        this.insertText = insertText;
+        this.insertText = new SnippetString(insertText);
         this.documentation = documentation;
+        this.detail = documentation;
     }
 }

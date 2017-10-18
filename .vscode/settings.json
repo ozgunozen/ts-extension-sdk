@@ -4,7 +4,6 @@
         "**/.git": true,
         "**/.DS_Store": true,
         "source/**/*.js": true,
-        "source/**/*.d.ts": true,
         "source/**/*.js.map": true,
         "test/**/*.js": true,
         "test/**/*.d.ts": true,

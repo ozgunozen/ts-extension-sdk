@@ -1,6 +1,6 @@
 {
   "name": "@teamsqlio/ts-extension-sdk",
-  "version": "0.3.8-beta",
+  "version": "0.4.4",
   "description": "TeamSQL Extension SDK",
   "main": "index",
   "scripts": {
@@ -8,9 +8,10 @@
     "build": "gulp build",
     "prepublish": "npm run build"
   },
-  "typings": "dist",
+  "typings": ["dist", "typings"],
   "files": [
-    "dist"
+    "dist",
+    "typings"
   ],
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
   },
   "dependencies": {
     "aes256": "^1.0.2",
+    "gulp-copy": "^1.0.1",
     "uuid": "^3.1.0"
   }
 }

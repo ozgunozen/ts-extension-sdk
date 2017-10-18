@@ -6,10 +6,17 @@ var gulp = require("gulp"),
     runSequence = require("run-sequence"),
     mocha = require("gulp-mocha");
 var clean = require('gulp-clean');
-
+var gulpCopy = require('gulp-copy');
 var tsSourceAndTestFiles = [
     "source/**/**.ts",
+    "source/**/**.d.ts",
     "test/**/**.test.ts"
+];
+
+var tsSourceAndTestFilesForLint = [
+    "source/**/**.ts",
+    "test/**/**.test.ts",
+    "!source/typings/*.d.ts"
 ];
 
 var tsSourceFiles = [
@@ -18,12 +25,14 @@ var tsSourceFiles = [
     "!source/test"
 ];
 
- var jsTestFiles = ['./dist/test/**/*.test.js'];
+var jsTestFiles = ['./dist/test/**/*.test.js'];
 
 var buildOutput = "./dist";
 
 gulp.task('clean', function () {
-    return gulp.src(buildOutput, {read: false})
+    return gulp.src(buildOutput, {
+            read: false
+        })
         .pipe(clean());
 });
 
@@ -33,7 +42,7 @@ gulp.task("lint", function () {
         emitError: (process.env.CI) ? true : false
     };
 
-    return gulp.src(tsSourceAndTestFiles)
+    return gulp.src(tsSourceAndTestFilesForLint)
         .pipe(tslint(config))
         .pipe(tslint.report());
 });
@@ -42,11 +51,15 @@ gulp.task("lint", function () {
 //* BUILD TEST
 //******************************************************************************
 var tsProject = tsc.createProject("tsconfig.json", {
-  typescript: require('typescript'), 
-  declaration: true,
+    typescript: require('typescript'),
+    declaration: true,
 });
 
 gulp.task("build-test", function () {
+    // gulp
+    // .src(['typings/*'])
+    // .pipe(gulpCopy("."))
+
     return gulp.src(tsSourceAndTestFiles, {
             base: "."
         })
@@ -55,6 +68,7 @@ gulp.task("build-test", function () {
             process.exit(1);
         })
         .pipe(gulp.dest(buildOutput));
+        
 });
 
 //******************************************************************************
@@ -69,6 +83,7 @@ gulp.task("test", function () {
 //* BUILD
 //******************************************************************************
 gulp.task("build-release", function () {
+
     return gulp.src(tsSourceFiles, {
             base: "."
         })
@@ -76,7 +91,11 @@ gulp.task("build-release", function () {
         .on("error", function (err) {
             process.exit(1);
         })
-        .pipe(gulp.dest(buildOutput));
+        .pipe(gulp.dest(buildOutput)).on('end', function(){
+            
+        })
+        
+
 });
 
 

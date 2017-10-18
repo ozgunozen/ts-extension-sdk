@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/@teamsqlio/monaco-editor/monaco.d.ts" />
+/// <reference path="../typings/monaco.d.ts" />
 import { IExtension } from "./interfaces/IExtension";
 import { WindowOptions } from "./window/WindowOptions";
 import { ChildWindow } from "./window/ChildWindow";
