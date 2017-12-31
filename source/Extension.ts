@@ -1,7 +1,9 @@
 /// <reference path="../typings/monaco.d.ts" />
+/// <reference path="../typings/tsdatalayer.d.ts" />
 import { IExtension } from "./interfaces/IExtension";
 import { WindowOptions } from "./window/WindowOptions";
 import { ChildWindow } from "./window/ChildWindow";
+
 const electron = require("electron");
 const remote = require("electron").remote;
 const ipcRenderer = require("electron").ipcRenderer;
@@ -94,5 +96,19 @@ export class Extension {
         let _window = <any>window;
         let editor = <monaco.editor.IStandaloneCodeEditor>_window.activeEditor;
         editor.addAction(action);
+    }
+
+    public executeQuery(connectionId: string, query: string, callback: (dataset: tsdatalayer.IDataSet) => void) {
+        let _window = <any>window;
+        let processId = "connection_explorer";
+        let params = {
+            connectionId: connectionId,
+            action: "QUERY",
+            query: query,
+            tabQuery: false,
+        };
+        _window.sendMessage(processId, params, (event: any, results: Array<tsdatalayer.IDataSet>) => {
+            console.log("oldu", results);
+        });
     }
 }
