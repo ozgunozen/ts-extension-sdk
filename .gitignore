@@ -20,7 +20,7 @@ build/Release
 
 # Dependency directory
 node_modules
-typings
+!typings
 dist
 
 # Optional npm cache directory
@@ -31,6 +31,7 @@ dist
 
 # Compiler generated
 *.d.ts
+!typings/**/*.d.ts
 *.js.map
 source/**/*.js
 source/**/*.js.map
