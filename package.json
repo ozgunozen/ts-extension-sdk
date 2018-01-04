@@ -1,6 +1,6 @@
 {
   "name": "@teamsqlio/ts-extension-sdk",
-  "version": "0.4.4",
+  "version": "0.4.5-alpha",
   "description": "TeamSQL Extension SDK",
   "main": "index",
   "scripts": {
@@ -8,7 +8,10 @@
     "build": "gulp build",
     "prepublish": "npm run build"
   },
-  "typings": ["dist", "typings"],
+  "typings": [
+    "dist",
+    "typings"
+  ],
   "files": [
     "dist",
     "typings"

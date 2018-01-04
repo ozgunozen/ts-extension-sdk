@@ -39,3 +39,5 @@ source/**/*.d.ts
 test/**/*.js
 test/**/*.d.ts
 test/**/*.d.ts.map
+
+package-lock.json
