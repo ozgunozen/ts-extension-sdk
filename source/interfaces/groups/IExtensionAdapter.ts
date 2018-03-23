@@ -1,16 +1,15 @@
 import { IExtension } from "../IExtension";
-import { IConnectionConfig } from "../datalayer/IConnectionConfig";
-import { IConnectionError } from "../datalayer/IConnectionError";
+import * as ts from "@teamsqlio/ts-data-layer-core";
 
 export interface IExtensionAdapter extends IExtension {
-    Init(config: IConnectionConfig): void;
-    Connect(callback: (err: IConnectionError) => void): void;
-    Disconnect(callback: (err: IConnectionError) => void): void;
-    Execute(query: string, statementCallback: (dataTable: Array<any>) => void,
+    Init(config: ts.IConnectionConfig): void;
+    Connect(callback: (err: ts.IConnectionError) => void): void;
+    Disconnect(callback: (err: ts.IConnectionError) => void): void;
+    Execute(query: string, statementCallback: (dataTable: Array<ts.IDataSet>) => void,
         completedCallback: (completed: boolean) => void, multistatemenSupport?: boolean): void;
     ExecuteWithTransaction?(query: string,
-        statementCallback: (dataTable: Array<any>) => void,
+        statementCallback: (dataTable: Array<ts.IDataSet>) => void,
         completedCallback: (completed: boolean) => void, multistatemenSupport?: boolean): void;
     Kill?(callback: (success: boolean) => void): void;
-    Validate?(callback: (err: IConnectionError) => void): void;
+    Validate?(callback: (err: ts.IConnectionError) => void): void;
 }
