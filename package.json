@@ -1,6 +1,6 @@
 {
   "name": "@teamsqlio/ts-extension-sdk",
-  "version": "0.4.5-alpha.6",
+  "version": "0.4.5-alpha.8",
   "description": "TeamSQL Extension SDK",
   "main": "index",
   "scripts": {
@@ -45,6 +45,6 @@
     "aes256": "^1.0.2",
     "gulp-copy": "^1.0.1",
     "uuid": "^3.1.0",
-    "@teamsqlio/ts-data-layer-core": "file:///Users/davutcanabacigil/Documents/TeamSQL/ts-data-layer-core/teamsqlio-ts-data-layer-core-1.0.15.tgz"
+    "@teamsqlio/ts-data-layer-core": "1.0.16"
   }
 }
