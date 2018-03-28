@@ -1,9 +1,3 @@
-export interface IDatabaseElementStateEvents {
-    stateName: string;
-    events: {[key: string]: Array<IDatabaseElementAction>};
-
-}
-
 export interface IDatabaseElementAction {
     actionType: string;
     options: IDatabaseElementActionOptions;

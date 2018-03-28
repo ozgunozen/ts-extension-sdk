@@ -1,8 +1,7 @@
 import {IDatabaseElementProperties} from "./IDatabaseElementProperties";
 import { IDatabaseElementAction,
          IDatabaseElementActionOptions,
-         IDatabaseElementMenuItem,
-         IDatabaseElementStateEvents } from "./IDatabaseElementActions";
+         IDatabaseElementMenuItem } from "./IDatabaseElementActions";
 
 export interface IDatabaseElement {
     id: string;
@@ -14,6 +13,7 @@ export interface IDatabaseElement {
     adapterItem: any;
     type: string;
     connectionType: string;
-    events: IDatabaseElementStateEvents;
+    state: string;
+    events: {[state: string]: {[event: string]: Array<IDatabaseElementAction>}};
     subItems: Array<IDatabaseElement>;
 }
