@@ -21,4 +21,3 @@ export interface IDatabaseElementActionOptions {
     connectionValidationRequired: boolean;
     reconnectOnInvalidation: boolean;
 }
-

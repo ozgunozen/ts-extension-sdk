@@ -1,5 +1,8 @@
-import {IDatabaseElementProperties} from './IDatabaseElementProperties'
-import {IDatabaseElementAction, IDatabaseElementActionOptions, IDatabaseElementMenuItem, IDatabaseElementStateEvents} from './IDatabaseElementActions'
+import {IDatabaseElementProperties} from "./IDatabaseElementProperties";
+import { IDatabaseElementAction,
+         IDatabaseElementActionOptions,
+         IDatabaseElementMenuItem,
+         IDatabaseElementStateEvents } from "./IDatabaseElementActions";
 
 export interface IDatabaseElement {
     id: string;

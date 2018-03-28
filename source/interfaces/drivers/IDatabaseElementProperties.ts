@@ -1,4 +1,4 @@
-import {IDatabaseElementConnectionSettings} from './IDatabaseElementConnectionSettings'
+import {IDatabaseElementConnectionSettings} from "./IDatabaseElementConnectionSettings";
 
 export interface IDatabaseElementProperties {
     connectable: boolean;
