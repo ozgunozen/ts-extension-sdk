@@ -16,4 +16,5 @@ export interface IDatabaseElement {
     state: string;
     events: {[state: string]: {[event: string]: Array<IDatabaseElementAction>}};
     subItems: Array<IDatabaseElement>;
+    appearEventEnabledForSubItems: boolean;
 }

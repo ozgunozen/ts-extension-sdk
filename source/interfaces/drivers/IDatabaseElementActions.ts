@@ -1,5 +1,6 @@
 export interface IDatabaseElementAction {
     actionType: string;
+    progressState: string; // Elements state will be switched to the progress state while the action is being executed.
     options: IDatabaseElementActionOptions;
     parameters: any;
 }

@@ -5,7 +5,7 @@ import * as ts from "@teamsqlio/ts-data-layer-core";
 export interface IExtensionAdapter extends IExtension {
     Init(config: ts.IConnectionConfig): void;
     Connect(callback: (response: IDatabaseResponse) => void): void;
-    Disconnect(callback: (err: ts.IConnectionError) => void): void;
+    Disconnect(callback: (response: IDatabaseResponse) => void): void;
     Execute(query: string, statementCallback: (dataTable: Array<ts.IDataSet>) => void,
         completedCallback: (completed: boolean) => void, multistatemenSupport?: boolean): void;
     ExecuteWithTransaction?(query: string,
