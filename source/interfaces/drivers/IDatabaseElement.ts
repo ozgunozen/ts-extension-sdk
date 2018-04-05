@@ -1,7 +1,9 @@
-import {IDatabaseElementProperties} from "./IDatabaseElementProperties";
-import { IDatabaseElementAction,
-         IDatabaseElementActionOptions,
-         IDatabaseElementMenuItem } from "./IDatabaseElementActions";
+import { IDatabaseElementProperties } from "./IDatabaseElementProperties";
+import {
+    IDatabaseElementAction,
+    IDatabaseElementActionOptions,
+    IDatabaseElementMenuItem
+} from "./IDatabaseElementActions";
 
 export interface IDatabaseElement {
     id: string;
@@ -9,12 +11,12 @@ export interface IDatabaseElement {
     connectionId: string;   // Target connection ID
     originalConnectionId: string;   // Target connection ID
     properties: IDatabaseElementProperties;
-    path: Array<string>;
+    connectionPath: Array<string>;
     adapterItem: any;
     type: string;
     connectionType: string;
     state: string;
-    events: {[state: string]: {[event: string]: Array<IDatabaseElementAction>}};
+    events: { [state: string]: { [event: string]: Array<IDatabaseElementAction> } };
     subItems: Array<IDatabaseElement>;
     appearEventEnabledForSubItems: boolean;
 }
