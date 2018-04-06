@@ -2,7 +2,7 @@ import { IDatabaseElementProperties } from "./IDatabaseElementProperties";
 import {
     IDatabaseElementAction,
     IDatabaseElementActionOptions,
-    IDatabaseElementMenuItem
+    IDatabaseElementMenuItem,
 } from "./IDatabaseElementActions";
 
 export interface IDatabaseElement {

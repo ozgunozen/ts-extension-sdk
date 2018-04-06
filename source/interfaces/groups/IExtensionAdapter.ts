@@ -3,6 +3,7 @@ import { IDatabaseResponse } from "../drivers/IDatabaseResponse";
 import * as ts from "@teamsqlio/ts-data-layer-core";
 
 export interface IExtensionAdapter extends IExtension {
+    connectionInitiated: boolean;
     Init(config: ts.IConnectionConfig): void;
     Connect(callback: (response: IDatabaseResponse) => void): void;
     Disconnect(callback: (response: IDatabaseResponse) => void): void;
