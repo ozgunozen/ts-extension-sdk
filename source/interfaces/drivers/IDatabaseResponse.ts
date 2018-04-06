@@ -4,4 +4,5 @@ export interface IDatabaseResponse {
     response: any;
     error: any;
     responseActions: Array<IDatabaseResponseAction>;
+    keepAlive: boolean;
 }
