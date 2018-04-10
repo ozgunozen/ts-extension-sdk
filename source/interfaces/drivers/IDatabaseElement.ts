@@ -16,7 +16,8 @@ export interface IDatabaseElement {
     type: string;
     connectionType: string;
     state: string;
-    events: { [state: string]: { [event: string]: Array<IDatabaseElementAction> } };
+    events: { [state: string]: { [event: string]: Array<IDatabaseElementAction> }};
+    contextmenu: { [state: string]: Array<IDatabaseElementMenuItem> };
     subItems: Array<IDatabaseElement>;
     appearEventEnabledForSubItems: boolean;
 }

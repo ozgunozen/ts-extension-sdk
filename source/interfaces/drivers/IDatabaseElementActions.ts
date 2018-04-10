@@ -5,10 +5,11 @@ export interface IDatabaseElementAction {
     parameters: any;
 }
 
-export interface IDatabaseElementMenuItem extends IDatabaseElementAction {
+export interface IDatabaseElementMenuItem {
     label: string;
     subitems: Array<IDatabaseElementMenuItem>;
     click: Array<IDatabaseElementAction>;
+    type: string;
 }
 
 export interface IDatabaseElementActionOptions {
