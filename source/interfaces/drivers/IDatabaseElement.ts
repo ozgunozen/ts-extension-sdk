@@ -7,6 +7,8 @@ import {
 
 export interface IDatabaseElement {
     id: string;
+    parentId: string;
+    childElementIds: Array<string>;
     name: string;
     connectionId: string;   // Target connection ID
     originalConnectionId: string;   // Target connection ID
@@ -20,4 +22,5 @@ export interface IDatabaseElement {
     contextmenu: { [state: string]: Array<IDatabaseElementMenuItem> };
     subItems: Array<IDatabaseElement>;
     appearEventEnabledForSubItems: boolean;
+    constructor(parentId: string, name: string, type: string);
 }
