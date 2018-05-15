@@ -22,5 +22,4 @@ export interface IDatabaseElement {
     contextmenu: { [state: string]: Array<IDatabaseElementMenuItem> };
     subItems: Array<IDatabaseElement>;
     appearEventEnabledForSubItems: boolean;
-    constructor(parentId: string, name: string, type: string);
 }
