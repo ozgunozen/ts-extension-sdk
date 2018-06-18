@@ -26,13 +26,16 @@ export class Extension {
         fileUrl = fileUrl + "?id=" + idx;
         child.loadURL(fileUrl);
         let _window = <any>window;
-        if (options.disableMainWindow) {
+        if (options.disableMainWindow && _window.disable) {
             _window.disable();
         }
 
         child.once("closed", () => {
             _window.enable();
             child = null;
+        });
+        child.once("ready-to-show", () => {
+            child.show();
         });
         if (options.showDevTools) {
             child.openDevTools();
