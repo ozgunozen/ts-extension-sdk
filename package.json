@@ -1,6 +1,6 @@
 {
   "name": "@teamsqlio/ts-extension-sdk",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "TeamSQL Extension SDK",
   "main": "index",
   "scripts": {
