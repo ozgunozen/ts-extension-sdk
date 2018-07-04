@@ -24,6 +24,7 @@ export class Extension {
         });
 
         fileUrl = fileUrl + "?id=" + idx;
+        child.setMenu(null);
         child.loadURL(fileUrl);
         let _window = <any>window;
         if (options.disableMainWindow && _window.disable) {
@@ -31,7 +32,9 @@ export class Extension {
         }
 
         child.once("closed", () => {
-            _window.enable();
+            if (_window && _window.enable) {
+                _window.enable();
+            }
             child = null;
         });
         child.once("ready-to-show", () => {
